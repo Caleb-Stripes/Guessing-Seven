@@ -15,7 +15,7 @@ public class GuessingSeven {
 		
 			int guess = input.nextInt();	
 		
-		attempts = attempts + 1;
+		attempts = attempts ++;//++ is the same as + 1
 		 
 		
 		if (guess == -1) {
