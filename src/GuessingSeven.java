@@ -6,12 +6,12 @@ public class GuessingSeven {
 		// TODO Auto-generated method stub
 
 		Scanner input = new Scanner (System.in);
-		System.out.println("Guess a number between 0 and 11.");
+		System.out.println("Guess a number between 0 and 11. \nYou have 4 guesses.");
 		
 		
 		int attempts = 0;
 		
-		while (attempts < 3) {
+		while (attempts < 4) {
 		
 			int guess = input.nextInt();	
 		
@@ -37,7 +37,9 @@ public class GuessingSeven {
 			System.out.println("Program terminated.");
 			System.exit(0);
 		}
+		
 		}
+		System.out.println("But your out of guesses, you lose.");
 		input.close();
 	}
 
