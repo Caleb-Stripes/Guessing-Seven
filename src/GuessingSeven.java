@@ -1,43 +1,72 @@
 import java.util.Scanner;
 
+import java.util.Random;
+
 public class GuessingSeven {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Scanner input = new Scanner (System.in);
-		System.out.println("Guess a number between 0 and 11. \nYou have 4 guesses.");
+		Scanner input = new Scanner(System.in);
+		System.out.println(
+				"Guess a number between 0 and 11. \nYou have 4 guesses. \n \"20\" will generate a random guess.");
+		Random rand = new Random();
 		
+		int answer = rand.nextInt(10) + 1;
+		//A good way to debug/test this line of code is to have is print in testing, but remove for final game.
 		
 		int attempts = 0;
-		
-		while (attempts < 4) {
-		
-			int guess = input.nextInt();	
-		
-		attempts = attempts ++;//++ is the same as + 1
-		 
-		
-		if (guess == -1) {
-			System.out.println("Program terminated.");
-			System.exit(0);
-		} 
-		
-		if (guess == 0) {
-			System.out.println("You must choose one of the following: \n1, 2, 3, 4, 5, 6, 7, 8, 9 or 10.");
+
+		while (attempts < 3) {
+			/*
+			 * while is the key word to create the loop (attempts < 4) is the condition
+			 * checked before looping back in
+			 */
+
+			attempts = ++attempts;//attempts++; would replace this code.
+			/*
+			 * this line keeps the code from looping infinitely by breaking the condition ++
+			 * is short hand for + 1
+			 */
+			System.out.println(attempts + " Attempt.");
 			
-		} else if (guess > 7) {
-			System.out.println("Guess Again. The number is LOWER.");
-		
-		} else if (guess < 7) {
-			System.out.println("Guess Again. The number is HIGHER.");
-		
-		} else {
-			System.out.println("Success!");
-			System.out.println("Program terminated.");
-			System.exit(0);
-		}
-		
+			int rNumber = -1;
+
+			
+
+			rNumber = rand.nextInt(10) + 1;
+			/*
+			 * In the () the default range is 0 (max - min + 1) (10) creates the range 0 to
+			 * 9
+			 */
+
+			int guess = input.nextInt();
+
+			if (guess == 20) {
+				guess = rNumber;
+				System.out.println("Random guess was " + rNumber);
+			}
+			if (guess == -1) {
+				System.out.println("Program terminated.");
+				System.exit(0);
+				// System.exit(0); is a termination command
+			}
+
+			if (guess == 0) {
+				System.out.println("You must choose one of the following: \n1, 2, 3, 4, 5, 6, 7, 8, 9 or 10.");
+
+			} else if (guess > answer) {
+				System.out.println("Guess Again. The number is LOWER.");
+
+			} else if (guess < answer) {
+				System.out.println("Guess Again. The number is HIGHER.");
+
+			} else {
+				System.out.println("Success!");
+				System.out.println("Program terminated.");
+				System.exit(0);
+			}
+
 		}
 		System.out.println("But your out of guesses, you lose.");
 		input.close();
