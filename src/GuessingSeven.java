@@ -28,13 +28,14 @@ public class GuessingSeven {
 			if (attempts == 4) {
 				System.out.println("But your out of guesses, you lose.");
 				System.out.println("Program Terminated...");
-				break;
-			} else {
 				attempts = attempts + 1;//attempts++; would replace this code.
 				/*
 				 * this line keeps the code from looping infinitely by breaking the condition ++
 				 * is short hand for + 1
 				 */
+				break;
+			} else {
+				attempts++;
 				System.out.println(" Attempt " + attempts + "...");
 				System.out.println("*************************************");
 			
@@ -62,12 +63,16 @@ public class GuessingSeven {
 				if (guess == 0) {
 					System.out.println("You must choose one of the following: \n1, 2, 3, 4, 5, 6, 7, 8, 9 or 10.");
 	
-				} else if (guess > answer) {
+				} else if (guess > answer && attempts < 4) {
 					System.out.println("Guess Again. The number is LOWER.");
 	
-				} else if (guess < answer) {
+				} else if (guess < answer && attempts < 4) {
 					System.out.println("Guess Again. The number is HIGHER.");
 	
+				} else if (attempts == 4) {
+					System.out.println("Oh Noooooo, you lose.");
+					System.out.println("Program Terminiated");
+					System.exit(0);
 				} else {
 					System.out.println("Success!");
 					System.out.println("Program terminated.");
